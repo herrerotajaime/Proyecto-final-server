@@ -1,7 +1,6 @@
 require('dotenv').config();
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const axios = require("axios")
 
 const bcryptSalt = 10;
 const salt = bcrypt.genSaltSync(bcryptSalt);
@@ -17,7 +16,7 @@ mongoose
 
 let users = [
   {
-    username: `Aruto`,
+    username: `Arturo`,
     password: bcrypt.hashSync(`1`, salt),
     name: `Arturo`,
     surname: `Perez Reverte`,
