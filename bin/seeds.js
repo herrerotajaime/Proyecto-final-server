@@ -39,6 +39,12 @@ let users = [
    
   },
 ]
+
+users.create  () 
+.then(() => {
+  return users.create(users)
+})
+
 .then(() => {
   // Close properly the connection to Mongoose
   mongoose.disconnect()

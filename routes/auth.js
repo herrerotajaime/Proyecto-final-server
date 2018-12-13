@@ -3,6 +3,8 @@ const passport = require('passport');
 const authRoutes = express.Router();
 const User = require("../models/User");
 const uploadCload = require("../config/cloudinary");
+const cors = require('cors');
+
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
