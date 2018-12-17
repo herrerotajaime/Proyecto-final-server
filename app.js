@@ -45,7 +45,7 @@ require('./passport')(app);
     
 app.use(cors({
   credentials: true,
-  origin: ['http://localhost:5000'],
+  origin: ['http://localhost:3000'],
 }));
 
 app.use('/', require('./routes/index'));

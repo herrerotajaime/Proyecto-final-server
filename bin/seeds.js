@@ -1,12 +1,16 @@
-require('dotenv').config();
+// Seeds file that remove all users and create 2 new users
+
+// To execute this seed, run from the root of the project
+// $ node bin/seeds.js
+
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const User = require("../models/User");
 
 const bcryptSalt = 10;
-const salt = bcrypt.genSaltSync(bcryptSalt);
 
 mongoose
-  .connect(process.env.DBURL, { useNewUrlParser: true })
+  .connect('mongodb://localhost/server', {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -16,35 +20,28 @@ mongoose
 
 let users = [
   {
-    username: `Arturo`,
-    password: bcrypt.hashSync(`1`, salt),
-    name: `Arturo`,
-    surname: `Perez Reverte`,
-    latitude: 40.39224670000001,
-    longitude:-3.6986323,
-    description: ``,
-    gender: `1`,
-    
+    username: "Juan",
+    password: bcrypt.hashSync("1", bcrypt.genSaltSync(bcryptSalt)),
+    email: "juan@gmail.com",
+    address: "miau"
+  
   },
   {
-    username: `Joaquin`,
-    password: bcrypt.hashSync(`1`, salt),
-    pictureUrl:"",
-    name: `Joaquin`,
-    surname: `Sabina`,
-    latitude: 40.39224670000001,
-    longitude:-3.6986339,
-    description: ``,
-    gender: `1`,
-   
-  },
+    username: "blanca",
+    password: bcrypt.hashSync("1", bcrypt.genSaltSync(bcryptSalt)),
+    email: "blanca@gmail.com",
+    address: "miau"
+  }
 ]
 
-users.create  () 
+User.deleteMany()
 .then(() => {
-  return users.create(users)
+  return User.create(users)
 })
-
+.then(usersCreated => {
+  console.log(`${usersCreated.length} users created with the following id:`);
+  console.log(usersCreated.map(u => u._id));
+})                                                                                                                            
 .then(() => {
   // Close properly the connection to Mongoose
   mongoose.disconnect()
