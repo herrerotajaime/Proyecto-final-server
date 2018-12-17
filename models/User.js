@@ -6,16 +6,16 @@ const userSchema = new Schema({
   username: String,
   password: String,
   email: String,
-  address: String,
-  zipCode: Number,
-  pictureUrl: String,
+  city: String,
   name: String,
   surname: String,
+  pictureUrl: String,
   age: Number,
   gender:"",
   description: String,
-  latitude: Number,
-  longitude: Number,
+  idiom1: String,
+  idiom2: String,
+
 
 }, {
   timestamps: {

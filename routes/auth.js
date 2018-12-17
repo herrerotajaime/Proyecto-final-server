@@ -35,17 +35,17 @@ router.post("/login", function (req, res, next) {
 });
 
 router.post("/signup", (req, res, next) => {
-
+  console.log(req.body)
   const username = req.body.username;
   const password = req.body.password;
   const email = req.body.email;
-  const address = req.body.address;
-  const zipCode = req.body.zipCode;
+  const city = req.body.city;
+  const name = req.body.name;
+  const surname = req.body.surname;
+  const description = req.body.description;
+  const idiom1 = req.body.idiom1;
+  const idiom2 = req.body.idiom2;
 
-  const googleMapsClient = require('@google/maps').createClient({
-    key: 'AIzaSyDRivfQDKbdyJeeXPj9ed6oP9QU-_wXJeg',
-    Promise: Promise
-  });
 
   // lo meto dentro de la promesa para que se me guarde:
   if (username === "" || password === "") {
@@ -71,25 +71,14 @@ router.post("/signup", (req, res, next) => {
     const newUser = new User({
       username,
       password: hashPass,
-      email
+      email,
+      city,
+      name,
+      surname,
+      description,
+      idiom1,
+      idiom2,
     })
-
-    if (user) {
-
-      googleMapsClient.geocode({
-          address
-        })
-        .asPromise()
-        .then((response) => {
-
-          //aqui consigo latitud y longitud:
-          var lat = response.json.results[0].geometry.viewport.northeast.lat;
-          var lng = response.json.results[0].geometry.viewport.northeast.lng;
-
-          newUser.address = address;
-          newUser.zipCode = zipCode;
-          newUser.lat = lat;
-          newUser.lng = lng;
 
           newUser.save()
             .then(user => {
@@ -104,22 +93,11 @@ router.post("/signup", (req, res, next) => {
         .catch((err) => {
           console.log(err);
         });
-    } else {
-
-      newUser.save()
-        .then(user => {
-          res.status(200).json(user);
-        })
-        .catch(err => {
-          res.status(400).json({
-            message: 'Saving user to database went wrong.'
-          });
-        });
-    }
-  })
+    
+  });
 
 
-});
+
 
 router.post('/edit', (req, res, next) => {
   const {
