@@ -3,7 +3,7 @@ const router  = express.Router();
 
 
 const Meeting = require('../models/Meeting')
-const Users = require("../models/User")
+const User = require("../models/User")
 
 
 /* GET home page */
@@ -17,7 +17,7 @@ router.get(`/meeting`, (req, res, next) => {
   })
 
 })
-router.get(`/Users`, (req, res, next) => {
+router.get(`/user`, (req, res, next) => {
   User.find({}, function (err, docs) {
     res.json(docs)
   })
