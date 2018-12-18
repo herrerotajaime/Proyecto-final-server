@@ -9,16 +9,18 @@ const Meeting = require("../models/Meeting");
 
 const bcryptSalt = 10;
 
-const randomInt = (min, max) => Math.random() * (max - min + 1) + min
+function randomInt(min,max) {
+    return (Math.random()*  ( max - min ) + min );
+}
 
-let maxLatitude = 40.490838
-let maxLongitude = -3.859387
-let minLatitude = 40.256484
-let minLongitude = -3.562756
+let maxLatitude = 40.482883365367314
+let minLatitude = 40.30193738139974
+let maxLongitude = -3.5474274657020715
+let minLongitude = -3.8756440184364465
 
 const markers = []
 
-for (let i = 0; i <= 100; i++) {
+for (let i = 0; i <= 50; i++) {
   markers.push({
     name: 'marker' + i,
       lat: randomInt(minLatitude, maxLatitude),
@@ -26,7 +28,7 @@ for (let i = 0; i <= 100; i++) {
   })
 }
 
-mongoose.connect('mongodb://localhost/server', {useNewUrlParser: true})
+mongoose.connect('mongodb://localhost/users', {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
