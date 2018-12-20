@@ -20,15 +20,22 @@ mongoose
 
 let users = [
   {
-    username: "Juan",
-    password: bcrypt.hashSync("1", bcrypt.genSaltSync(bcryptSalt)),
-    email: "juan@gmail.com",
-    address: "miau"
+    username: "Javi",
+    password: bcrypt.hashSync("a", bcrypt.genSaltSync(bcryptSalt)),
+    name: "Javi",
+    surname: "Lopez",
+    description:"Soy un chico asiatico interesado en aprender Español, mi afición es comer arroz",
+    idiom1: "Coreano",
+    idiom2: "Español",
+    city: "miau",
+    pictureUrl:"",
+    email: "javi@gmail.com",
+   
   
   },
   {
     username: "blanca",
-    password: bcrypt.hashSync("1", bcrypt.genSaltSync(bcryptSalt)),
+    password: bcrypt.hashSync("a", bcrypt.genSaltSync(bcryptSalt)),
     email: "blanca@gmail.com",
     address: "miau"
   }

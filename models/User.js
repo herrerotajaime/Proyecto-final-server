@@ -11,7 +11,6 @@ const userSchema = new Schema({
   surname: String,
   pictureUrl: String,
   age: Number,
-  gender:"",
   description: String,
   idiom1: String,
   idiom2: String,
