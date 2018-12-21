@@ -6,7 +6,12 @@ const userSchema = new Schema({
   name: String,
   lat: Number,
   lng: Number,
-  users: String,
+  user1: String,
+  user2: String,
+  picurl1: String,
+  picurl2: String,
+  description: String,
+  date: String,
 
 
 }, {
